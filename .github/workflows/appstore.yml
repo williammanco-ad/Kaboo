@@ -12,6 +12,9 @@ on:
           - testflight
           - appstore
 
+permissions:
+  contents: read
+
 jobs:
   deploy:
     name: Deploy to ${{ github.event.inputs.release_type }}
