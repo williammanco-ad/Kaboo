@@ -60,3 +60,18 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+
+# Build artifacts
+build/
+*.ipa
+*.dSYM.zip
+DerivedData/
+
+# App Store Connect API Key (should be in GitHub Secrets only)
+AuthKey_*.p8
+
+# Temporary files
+*.swp
+*.swo
+*~
+.DS_Store
