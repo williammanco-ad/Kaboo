@@ -1,0 +1,28 @@
+# Matchfile - Code signing configuration
+# For more information, see:
+# https://docs.fastlane.tools/actions/match/
+
+# Git URL for certificates repository
+# Replace with your actual certificates repository
+git_url("https://github.com/YOUR_USERNAME/certificates")
+
+# Storage mode (git, google_cloud, s3, gitlab_secure_files)
+storage_mode("git")
+
+# App Identifier
+# Replace with your actual app identifier
+app_identifier(["com.yourcompany.kaboo"])
+
+# Your Apple ID username
+# Replace with your actual Apple ID
+username("YOUR_APPLE_ID@example.com")
+
+# Type of provisioning profile
+# Can be: development, adhoc, appstore, enterprise
+type("appstore")
+
+# Additional certificate types (if needed)
+# additional_cert_types(["developer_id_installer"])
+
+# For more information about the Matchfile, see:
+# https://docs.fastlane.tools/actions/match/

@@ -1,0 +1,133 @@
+# Fastfile - Main fastlane configuration
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+
+default_platform(:ios)
+
+platform :ios do
+  
+  before_all do
+    # Ensure we're on the latest version
+    # update_fastlane
+  end
+
+  # Build lane - Build the app for testing or release
+  desc "Build the app"
+  lane :build do
+    # Increment build number
+    increment_build_number(xcodeproj: "Kaboo.xcodeproj")
+    
+    # Sync code signing
+    match(type: "appstore", readonly: true)
+    
+    # Build the app
+    gym(
+      scheme: "Kaboo",
+      export_method: "app-store",
+      output_directory: "./build",
+      output_name: "Kaboo.ipa"
+    )
+  end
+
+  # Beta lane - Deploy to TestFlight
+  desc "Upload a new Beta Build to TestFlight"
+  lane :beta do
+    # Increment build number
+    increment_build_number(xcodeproj: "Kaboo.xcodeproj")
+    
+    # Sync code signing
+    match(type: "appstore", readonly: true)
+    
+    # Build the app
+    gym(
+      scheme: "Kaboo",
+      export_method: "app-store",
+      output_directory: "./build",
+      output_name: "Kaboo.ipa"
+    )
+    
+    # Upload to TestFlight
+    pilot(
+      skip_waiting_for_build_processing: true,
+      ipa: "./build/Kaboo.ipa"
+    )
+    
+    # Notify on successful upload
+    notification(
+      subtitle: "Kaboo Beta Upload",
+      message: "Successfully uploaded to TestFlight!"
+    )
+  end
+
+  # Release lane - Deploy to App Store
+  desc "Deploy a new version to the App Store"
+  lane :release do
+    # Increment version number (you can also do this manually)
+    # increment_version_number(xcodeproj: "Kaboo.xcodeproj")
+    
+    # Increment build number
+    increment_build_number(xcodeproj: "Kaboo.xcodeproj")
+    
+    # Sync code signing
+    match(type: "appstore", readonly: true)
+    
+    # Build the app
+    gym(
+      scheme: "Kaboo",
+      export_method: "app-store",
+      output_directory: "./build",
+      output_name: "Kaboo.ipa"
+    )
+    
+    # Upload to App Store
+    deliver(
+      force: true,
+      skip_screenshots: true,
+      skip_metadata: false,
+      submit_for_review: false
+    )
+    
+    # Notify on successful upload
+    notification(
+      subtitle: "Kaboo Release",
+      message: "Successfully uploaded to App Store!"
+    )
+  end
+
+  # Test lane - Run tests
+  desc "Run tests"
+  lane :test do
+    scan(
+      scheme: "Kaboo",
+      device: "iPhone 15",
+      clean: true
+    )
+  end
+
+  # Match lane - Setup code signing
+  desc "Setup code signing"
+  lane :setup_signing do
+    match(
+      type: "development",
+      readonly: false
+    )
+    match(
+      type: "appstore",
+      readonly: false
+    )
+  end
+
+  # Screenshots lane - Generate screenshots
+  desc "Generate screenshots"
+  lane :screenshots do
+    snapshot
+  end
+
+  # Error handling
+  error do |lane, exception|
+    notification(
+      subtitle: "Error in #{lane}",
+      message: exception.message
+    )
+  end
+end

@@ -1,0 +1,22 @@
+# Appfile - App specific configuration
+# For more information about the Appfile, see:
+# https://docs.fastlane.tools/advanced/#appfile
+
+# Your Apple ID email address
+# Replace with your actual Apple ID
+apple_id("YOUR_APPLE_ID@example.com")
+
+# Your iTunes Connect Team ID
+# Replace with your actual Team ID
+itc_team_id("YOUR_ITC_TEAM_ID")
+
+# Your Developer Portal Team ID
+# Replace with your actual Team ID
+team_id("YOUR_TEAM_ID")
+
+# App Identifier
+# Replace with your actual app identifier
+app_identifier("com.yourcompany.kaboo")
+
+# For more information about the Appfile, see:
+# https://docs.fastlane.tools/advanced/#appfile
