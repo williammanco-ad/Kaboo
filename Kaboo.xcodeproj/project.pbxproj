@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BCD03172D31E5DAFA1CC628B /* Kaboo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kaboo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B30709829004563844B9E31 /* Kaboo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kaboo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCD5E0641C39F2F2F1826A5D /* KabooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KabooApp.swift; sourceTree = "<group>"; };
 		4BBBFA5C259E098F19205CC3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2AA2DB9179BD5CE2A7B0AD4E /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		0BF935E41677883B0332D373 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BCD03172D31E5DAFA1CC628B /* Kaboo.app */,
+				1B30709829004563844B9E31 /* Kaboo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,7 +85,7 @@
 			);
 			name = Kaboo;
 			productName = Kaboo;
-			productReference = BCD03172D31E5DAFA1CC628B /* Kaboo.app */;
+			productReference = 1B30709829004563844B9E31 /* Kaboo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
