@@ -1,128 +1,81 @@
-# Kaboo 🎮🃏
-
-[![CI](https://github.com/williammanco-ad/Kaboo/workflows/CI/badge.svg)](https://github.com/williammanco-ad/Kaboo/actions/workflows/ci.yml)
-[![Release](https://github.com/williammanco-ad/Kaboo/workflows/Release/badge.svg)](https://github.com/williammanco-ad/Kaboo/actions/workflows/release.yml)
-[![License](https://img.shields.io/github/license/williammanco-ad/Kaboo)](LICENSE)
+# Kaboo
 
 Cards game born in Sicily that conquered the world
 
-## 📱 About
+## Overview
 
-Kaboo is a classic Sicilian card game brought to iOS. Experience the authentic gameplay with modern design and smooth animations.
+Kaboo is a SwiftUI iOS app that allows players to track scores for the Sicilian card game Kaboo. The app features:
 
-## ✨ Features
+- **Splash Screen**: A fancy green-themed splash screen with card suit symbols
+- **Game Management**: Start games, add players, and track scores in real-time
+- **Score Tracking**: Easy increment/decrement buttons for each player's score
+- **Winner Declaration**: Call "Kaboo!" to end the game and declare the winner (lowest score wins)
+- **Game History**: View all past game sessions with player scores and winners
 
-- Classic Kaboo gameplay rules
-- Beautiful card designs
-- Smooth animations
-- Single player mode with AI
-- Multiplayer support
-- Tutorial for new players
-- Statistics and achievements
-- Leaderboards
+## Features
 
-## 🚀 Release Pipeline
+### Splash Screen
+- Green background with animated card symbols (♠️ ♥️ ♣️ ♦️)
+- Smooth fade-in animation
+- Displays for 2.5 seconds on app launch
 
-This project includes a complete automated release pipeline with:
+### Home Tab
+- **Start New Game**: Big green button to initiate a game session
+- **Add Players**: Add multiple players with custom names
+- **Score Management**: 
+  - Plus/minus buttons for each player
+  - Real-time score updates
+  - Visual card-style player list
+- **Kaboo Button**: Fancy gradient button to end the game
+  - Shows winner preview in alert
+  - Winner is the player with the lowest score
+- **Cancel Game**: Option to cancel an active game
 
-- **Continuous Integration**: Automated builds and tests on every commit
-- **Automated Releases**: Tag-based releases with GitHub Actions
-- **TestFlight Distribution**: Beta testing via TestFlight
-- **App Store Deployment**: Automated App Store submissions
+### History Tab
+- Lists all completed games
+- Shows game date and time
+- Displays all players with their final scores
+- Highlights the winner with a crown icon
+- Trophy indicator next to winner's name
+- Players sorted by score (lowest to highest)
 
-### Quick Start for Releases
-
-See [RELEASE.md](RELEASE.md) for complete instructions on:
-- Setting up the release pipeline
-- Configuring code signing
-- Deploying to TestFlight
-- Releasing to the App Store
-
-### Creating a New Release
-
-```bash
-# Tag a new version
-git tag v1.0.0
-git push origin v1.0.0
-
-# The GitHub Actions workflow will automatically:
-# - Build the app
-# - Create a GitHub release
-# - Generate changelog
-```
-
-### Deploy to TestFlight
-
-```bash
-# Via GitHub Actions
-# Go to Actions → Deploy to App Store → Run workflow → Select "testflight"
-
-# Or locally
-fastlane beta
-```
-
-## 🛠️ Development
-
-### Prerequisites
-
-- Xcode (latest stable version)
-- iOS 14.0 or later
-- Swift 5.0 or later
-- Fastlane (for deployment)
-
-### Setup
-
-1. Clone the repository
-2. Open `Kaboo.xcodeproj` in Xcode
-3. Build and run
-
-### Building
-
-```bash
-# Build for testing
-xcodebuild -project Kaboo.xcodeproj -scheme Kaboo -configuration Debug build
-
-# Run tests
-xcodebuild test -project Kaboo.xcodeproj -scheme Kaboo -destination 'platform=iOS Simulator,name=iPhone 15'
-```
-
-## 📦 Project Structure
+## Project Structure
 
 ```
-.
-├── .github/workflows/    # GitHub Actions workflows
-│   ├── ci.yml           # Continuous integration
-│   ├── release.yml      # Release automation
-│   └── appstore.yml     # App Store deployment
-├── fastlane/            # Fastlane configuration
-│   ├── Fastfile         # Build and deployment lanes
-│   ├── Appfile          # App configuration
-│   ├── Matchfile        # Code signing configuration
-│   └── metadata/        # App Store metadata
-├── RELEASE.md           # Release pipeline documentation
-└── README.md            # This file
+Kaboo/
+├── Kaboo.xcodeproj/          # Xcode project file
+│   └── project.pbxproj
+├── Kaboo/
+│   ├── KabooApp.swift         # Main app entry point
+│   ├── ContentView.swift      # Tab view container
+│   ├── SplashScreenView.swift # Splash screen with animations
+│   ├── HomeView.swift         # Game management interface
+│   ├── HistoryView.swift      # Past games display
+│   ├── Models.swift           # Data models (Player, GameSession, GameStore)
+│   └── Assets.xcassets/       # App assets
+└── README.md
 ```
 
-## 📄 License
+## Technical Details
 
-See [LICENSE](LICENSE) file for details.
+- **Platform**: iOS 17.0+
+- **Framework**: SwiftUI
+- **Language**: Swift 5.0
+- **Data Persistence**: UserDefaults (for game history)
+- **Architecture**: MVVM with ObservableObject
 
-## 🤝 Contributing
+## Building and Running
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Open `Kaboo.xcodeproj` in Xcode
+2. Select an iOS Simulator or device
+3. Press ⌘R to build and run
 
-## 📞 Support
+## How to Play
 
-For support, please visit [your support URL] or open an issue on GitHub.
-
-## 🎯 Roadmap
-
-- [ ] Add your Xcode project
-- [ ] Configure code signing
-- [ ] Test the CI pipeline
-- [ ] Deploy to TestFlight
-- [ ] Release to App Store
-
----
-
-Made with ❤️ in Sicily
+1. Launch the app (splash screen appears)
+2. Tap "Start New Game" on the Home tab
+3. Add players using the "Add Player" button
+4. During gameplay, use +/- buttons to adjust scores
+5. When ready to finish, tap the "KABOO!" button
+6. The winner (lowest score) is announced
+7. View the completed game in the History tab
