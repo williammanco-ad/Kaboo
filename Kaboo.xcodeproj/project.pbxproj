@@ -7,28 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D0000001A1111110000001 /* KabooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0000001A1111110000002 /* KabooApp.swift */; };
-		1D0000001A1111110000003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0000001A1111110000004 /* ContentView.swift */; };
-		1D0000001A1111110000005 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0000001A1111110000006 /* SplashScreenView.swift */; };
-		1D0000001A1111110000007 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0000001A1111110000008 /* HomeView.swift */; };
-		1D0000001A1111110000009 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0000001A111111000000A /* HistoryView.swift */; };
-		1D0000001A111111000000B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0000001A111111000000C /* Models.swift */; };
-		1D0000001A111111000000D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D0000001A111111000000E /* Assets.xcassets */; };
+		BCD03172D31E5DAFA1CC628B /* KabooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD5E0641C39F2F2F1826A5D /* KabooApp.swift */; };
+		43DBA9F848FB1D9C27FB6007 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBBFA5C259E098F19205CC3 /* ContentView.swift */; };
+		FE4D13C5C609232D8A7F8481 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA2DB9179BD5CE2A7B0AD4E /* SplashScreenView.swift */; };
+		6C924540FF19D560E4212018 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CABCADF169A03DE09C8420 /* HomeView.swift */; };
+		04706625A0F61DE63BAFD1EA /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC079F5DB02554B4CA18EB0D /* HistoryView.swift */; };
+		8349290C03FEFEDA6D0E2970 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74394CD94FE005B4852C7F38 /* Models.swift */; };
+		09ED1E82F51670A094039F9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B587346216FFB825DC4527D /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D0000001A1111110000001 /* Kaboo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kaboo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D0000001A1111110000002 /* KabooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KabooApp.swift; sourceTree = "<group>"; };
-		1D0000001A1111110000004 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		1D0000001A1111110000006 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
-		1D0000001A1111110000008 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		1D0000001A111111000000A /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		1D0000001A111111000000C /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		1D0000001A111111000000E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1B30709829004563844B9E31 /* Kaboo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kaboo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCD5E0641C39F2F2F1826A5D /* KabooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KabooApp.swift; sourceTree = "<group>"; };
+		4BBBFA5C259E098F19205CC3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2AA2DB9179BD5CE2A7B0AD4E /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		48CABCADF169A03DE09C8420 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BC079F5DB02554B4CA18EB0D /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		74394CD94FE005B4852C7F38 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		9B587346216FFB825DC4527D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1D0000001A1111110000010 /* Frameworks */ = {
+		86611EBF0C85B39D2871B5BF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,32 +38,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1D0000001A1111110000011 = {
+		805C568E6E71A53F598E2A5B = {
 			isa = PBXGroup;
 			children = (
-				1D0000001A1111110000012 /* Kaboo */,
-				1D0000001A1111110000013 /* Products */,
+				C33A716DD812E702AA0949F1 /* Kaboo */,
+				0BF935E41677883B0332D373 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		1D0000001A1111110000012 /* Kaboo */ = {
+		C33A716DD812E702AA0949F1 /* Kaboo */ = {
 			isa = PBXGroup;
 			children = (
-				1D0000001A1111110000002 /* KabooApp.swift */,
-				1D0000001A1111110000004 /* ContentView.swift */,
-				1D0000001A1111110000006 /* SplashScreenView.swift */,
-				1D0000001A1111110000008 /* HomeView.swift */,
-				1D0000001A111111000000A /* HistoryView.swift */,
-				1D0000001A111111000000C /* Models.swift */,
-				1D0000001A111111000000E /* Assets.xcassets */,
+				DCD5E0641C39F2F2F1826A5D /* KabooApp.swift */,
+				4BBBFA5C259E098F19205CC3 /* ContentView.swift */,
+				2AA2DB9179BD5CE2A7B0AD4E /* SplashScreenView.swift */,
+				48CABCADF169A03DE09C8420 /* HomeView.swift */,
+				BC079F5DB02554B4CA18EB0D /* HistoryView.swift */,
+				74394CD94FE005B4852C7F38 /* Models.swift */,
+				9B587346216FFB825DC4527D /* Assets.xcassets */,
 			);
 			path = Kaboo;
 			sourceTree = "<group>";
 		};
-		1D0000001A1111110000013 /* Products */ = {
+		0BF935E41677883B0332D373 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D0000001A1111110000001 /* Kaboo.app */,
+				1B30709829004563844B9E31 /* Kaboo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,13 +71,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D0000001A1111110000014 /* Kaboo */ = {
+		08821C35A1B73CAD1B6A640D /* Kaboo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D0000001A1111110000015 /* Build configuration list for PBXNativeTarget "Kaboo" */;
+			buildConfigurationList = 61586290D793A6C14646BDE7 /* Build configuration list for PBXNativeTarget "Kaboo" */;
 			buildPhases = (
-				1D0000001A1111110000016 /* Sources */,
-				1D0000001A1111110000010 /* Frameworks */,
-				1D0000001A1111110000017 /* Resources */,
+				FD7F5A978B5FC2043561F468 /* Sources */,
+				86611EBF0C85B39D2871B5BF /* Frameworks */,
+				C2BB7E7F4247BE3B5966A65A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -85,25 +85,25 @@
 			);
 			name = Kaboo;
 			productName = Kaboo;
-			productReference = 1D0000001A1111110000001 /* Kaboo.app */;
+			productReference = 1B30709829004563844B9E31 /* Kaboo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1D0000001A1111110000018 /* Project object */ = {
+		DAE6A93A222FC04F4712A6E0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					1D0000001A1111110000014 = {
+					08821C35A1B73CAD1B6A640D = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = 1D0000001A1111110000019 /* Build configuration list for PBXProject "Kaboo" */;
+			buildConfigurationList = E8C48DBAA584D4D56A660978 /* Build configuration list for PBXProject "Kaboo" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -111,45 +111,45 @@
 				en,
 				Base,
 			);
-			mainGroup = 1D0000001A1111110000011;
-			productRefGroup = 1D0000001A1111110000013 /* Products */;
+			mainGroup = 805C568E6E71A53F598E2A5B;
+			productRefGroup = 0BF935E41677883B0332D373 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D0000001A1111110000014 /* Kaboo */,
+				08821C35A1B73CAD1B6A640D /* Kaboo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1D0000001A1111110000017 /* Resources */ = {
+		C2BB7E7F4247BE3B5966A65A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D0000001A111111000000D /* Assets.xcassets in Resources */,
+				09ED1E82F51670A094039F9F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1D0000001A1111110000016 /* Sources */ = {
+		FD7F5A978B5FC2043561F468 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D0000001A1111110000001 /* KabooApp.swift in Sources */,
-				1D0000001A1111110000003 /* ContentView.swift in Sources */,
-				1D0000001A1111110000005 /* SplashScreenView.swift in Sources */,
-				1D0000001A1111110000007 /* HomeView.swift in Sources */,
-				1D0000001A1111110000009 /* HistoryView.swift in Sources */,
-				1D0000001A111111000000B /* Models.swift in Sources */,
+				BCD03172D31E5DAFA1CC628B /* KabooApp.swift in Sources */,
+				43DBA9F848FB1D9C27FB6007 /* ContentView.swift in Sources */,
+				FE4D13C5C609232D8A7F8481 /* SplashScreenView.swift in Sources */,
+				6C924540FF19D560E4212018 /* HomeView.swift in Sources */,
+				04706625A0F61DE63BAFD1EA /* HistoryView.swift in Sources */,
+				8349290C03FEFEDA6D0E2970 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		1D0000001A111111000001A /* Debug */ = {
+		FBF1306467F46AF72FAAAA70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -212,7 +212,7 @@
 			};
 			name = Debug;
 		};
-		1D0000001A111111000001B /* Release */ = {
+		17084F5E09E45F4D4C70AB2E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -268,7 +268,7 @@
 			};
 			name = Release;
 		};
-		1D0000001A111111000001C /* Debug */ = {
+		83C0B9D013F4C6F7D6599F2A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -296,7 +296,7 @@
 			};
 			name = Debug;
 		};
-		1D0000001A111111000001D /* Release */ = {
+		190CD3C293D1931D540A81D0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -327,25 +327,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D0000001A1111110000015 /* Build configuration list for PBXNativeTarget "Kaboo" */ = {
+		61586290D793A6C14646BDE7 /* Build configuration list for PBXNativeTarget "Kaboo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1D0000001A111111000001C /* Debug */,
-				1D0000001A111111000001D /* Release */,
+				83C0B9D013F4C6F7D6599F2A /* Debug */,
+				190CD3C293D1931D540A81D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1D0000001A1111110000019 /* Build configuration list for PBXProject "Kaboo" */ = {
+		E8C48DBAA584D4D56A660978 /* Build configuration list for PBXProject "Kaboo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1D0000001A111111000001A /* Debug */,
-				1D0000001A111111000001B /* Release */,
+				FBF1306467F46AF72FAAAA70 /* Debug */,
+				17084F5E09E45F4D4C70AB2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1D0000001A1111110000018 /* Project object */;
+	rootObject = DAE6A93A222FC04F4712A6E0 /* Project object */;
 }
