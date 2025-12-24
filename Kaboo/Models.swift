@@ -8,6 +8,8 @@
 import Foundation
 
 struct Player: Identifiable, Codable {
+    static let minimumScore = 0
+    
     let id: UUID
     var name: String
     var score: Int
@@ -82,15 +84,23 @@ class GameStore: ObservableObject {
     }
     
     private func saveSessions() {
-        if let encoded = try? JSONEncoder().encode(pastSessions) {
+        do {
+            let encoded = try JSONEncoder().encode(pastSessions)
             UserDefaults.standard.set(encoded, forKey: "pastSessions")
+        } catch {
+            print("Error saving game sessions: \(error.localizedDescription)")
         }
     }
     
     private func loadSessions() {
-        if let data = UserDefaults.standard.data(forKey: "pastSessions"),
-           let decoded = try? JSONDecoder().decode([GameSession].self, from: data) {
-            pastSessions = decoded
+        guard let data = UserDefaults.standard.data(forKey: "pastSessions") else {
+            return
+        }
+        
+        do {
+            pastSessions = try JSONDecoder().decode([GameSession].self, from: data)
+        } catch {
+            print("Error loading game sessions: \(error.localizedDescription)")
         }
     }
 }

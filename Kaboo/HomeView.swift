@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var gameStore = GameStore()
+    @EnvironmentObject var gameStore: GameStore
     @State private var showingAddPlayer = false
     @State private var newPlayerName = ""
     @State private var showingKabooAlert = false
@@ -191,7 +191,7 @@ struct PlayerScoreCard: View {
             
             HStack(spacing: 15) {
                 Button(action: {
-                    onScoreChange(max(0, player.score - 1))
+                    onScoreChange(max(Player.minimumScore, player.score - 1))
                 }) {
                     Image(systemName: "minus.circle.fill")
                         .font(.title2)
@@ -216,4 +216,5 @@ struct PlayerScoreCard: View {
 
 #Preview {
     HomeView()
+        .environmentObject(GameStore())
 }

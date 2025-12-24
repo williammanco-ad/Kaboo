@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistoryView: View {
-    @StateObject private var gameStore = GameStore()
+    @EnvironmentObject var gameStore: GameStore
     
     var body: some View {
         NavigationStack {
@@ -115,4 +115,5 @@ struct GameSessionCard: View {
 
 #Preview {
     HistoryView()
+        .environmentObject(GameStore())
 }

@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct KabooApp: App {
     @State private var showSplash = true
+    @StateObject private var gameStore = GameStore()
     
     var body: some Scene {
         WindowGroup {
@@ -24,6 +25,7 @@ struct KabooApp: App {
                     }
             } else {
                 ContentView()
+                    .environmentObject(gameStore)
             }
         }
     }
