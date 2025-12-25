@@ -12,6 +12,8 @@ struct HomeView: View {
     @State private var showingAddPlayer = false
     @State private var newPlayerName = ""
     @State private var showingKabooAlert = false
+    @State private var showingDatePicker = false
+    @State private var selectedGameDate = Date()
     
     var body: some View {
         NavigationStack {
@@ -37,7 +39,8 @@ struct HomeView: View {
                                 .fontWeight(.semibold)
                             
                             Button(action: {
-                                gameStore.startNewGame()
+                                showingDatePicker = true
+                                selectedGameDate = Date()
                             }) {
                                 HStack {
                                     Image(systemName: "play.fill")
@@ -169,6 +172,18 @@ struct HomeView: View {
                     Text("\(winner.name) wins with \(winner.score) points!")
                 }
             }
+            .sheet(isPresented: $showingDatePicker) {
+                DatePickerSheet(
+                    selectedDate: $selectedGameDate,
+                    onConfirm: { date in
+                        gameStore.startNewGame(withDate: date)
+                        showingDatePicker = false
+                    },
+                    onCancel: {
+                        showingDatePicker = false
+                    }
+                )
+            }
         }
     }
 }
@@ -176,6 +191,8 @@ struct HomeView: View {
 struct PlayerScoreCard: View {
     let player: Player
     let onScoreChange: (Int) -> Void
+    @State private var showingScoreInput = false
+    @State private var scoreInput = ""
     
     var body: some View {
         HStack {
@@ -199,6 +216,15 @@ struct PlayerScoreCard: View {
                 }
                 
                 Button(action: {
+                    showingScoreInput = true
+                    scoreInput = "\(player.score)"
+                }) {
+                    Image(systemName: "pencil.circle.fill")
+                        .font(.title2)
+                        .foregroundColor(.blue)
+                }
+                
+                Button(action: {
                     onScoreChange(player.score + 1)
                 }) {
                     Image(systemName: "plus.circle.fill")
@@ -211,6 +237,91 @@ struct PlayerScoreCard: View {
         .background(Color.white)
         .cornerRadius(12)
         .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
+        .alert("Set Score for \(player.name)", isPresented: $showingScoreInput) {
+            TextField("Score", text: $scoreInput)
+                .keyboardType(.numberPad)
+            Button("Cancel", role: .cancel) {
+                scoreInput = ""
+            }
+            Button("Set") {
+                if let newScore = Int(scoreInput) {
+                    onScoreChange(max(Player.minimumScore, newScore))
+                }
+                scoreInput = ""
+            }
+        } message: {
+            Text("Enter a score (minimum \(Player.minimumScore))")
+        }
+    }
+}
+
+struct DatePickerSheet: View {
+    @Binding var selectedDate: Date
+    let onConfirm: (Date) -> Void
+    let onCancel: () -> Void
+    
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 20) {
+                Text("Select Game Date")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .padding(.top, 30)
+                
+                Text("Choose when this game is being played")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                
+                DatePicker(
+                    "Game Date",
+                    selection: $selectedDate,
+                    in: ...Date(),
+                    displayedComponents: [.date, .hourAndMinute]
+                )
+                .datePickerStyle(.graphical)
+                .padding()
+                
+                HStack(spacing: 15) {
+                    Button(action: {
+                        onCancel()
+                    }) {
+                        Text("Cancel")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.gray.opacity(0.2))
+                            .foregroundColor(.gray)
+                            .cornerRadius(12)
+                    }
+                    
+                    Button(action: {
+                        onConfirm(selectedDate)
+                    }) {
+                        Text("Start Game")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.green)
+                            .foregroundColor(.white)
+                            .cornerRadius(12)
+                    }
+                }
+                .padding()
+                
+                Button(action: {
+                    onConfirm(Date())
+                }) {
+                    HStack {
+                        Image(systemName: "clock.fill")
+                        Text("Use Current Time")
+                    }
+                    .foregroundColor(.blue)
+                }
+                .padding(.bottom, 30)
+                
+                Spacer()
+            }
+            .background(Color(UIColor.systemGroupedBackground))
+        }
+        .presentationDetents([.medium, .large])
     }
 }
 
