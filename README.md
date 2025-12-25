@@ -21,7 +21,7 @@ Kaboo is a SwiftUI iOS app that allows players to track scores for the Sicilian 
 
 ### New Features (Latest Update)
 - **Direct Score Input**: Tap the pencil button on any player card to enter a score directly
-  - Supports any positive integer value
+  - Supports any integer value (positive or negative)
   - Quick way to set exact scores
   - Minimum score validation (0) still enforced
 - **Game Date Selection**: When starting a new game, choose the date and time

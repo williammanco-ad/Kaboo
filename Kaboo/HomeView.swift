@@ -239,7 +239,7 @@ struct PlayerScoreCard: View {
         .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
         .alert("Set Score for \(player.name)", isPresented: $showingScoreInput) {
             TextField("Score", text: $scoreInput)
-                .keyboardType(.numberPad)
+                .keyboardType(.numbersAndPunctuation)
             Button("Cancel", role: .cancel) {
                 scoreInput = ""
             }
