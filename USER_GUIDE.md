@@ -14,7 +14,11 @@ Kaboo is a SwiftUI app for tracking scores in the Sicilian card game Kaboo. The 
 
 #### Starting a New Game
 1. Tap the **"Start New Game"** button (green gradient)
-2. The game session begins
+2. A date picker sheet appears with options to:
+   - **Select a specific date and time** using the graphical date picker (useful for recording historical games)
+   - **Use Current Time** button for games being played right now
+   - **Cancel** to return without starting a game
+3. Tap "Start Game" to confirm and begin the session
 
 #### Adding Players
 1. Tap **"Add Player"** button (blue)
@@ -26,9 +30,14 @@ Kaboo is a SwiftUI app for tracking scores in the Sicilian card game Kaboo. The 
 - Each player has a card with:
   - Name display
   - Current score
-  - **Minus button** (red circle) - decreases score
-  - **Plus button** (green circle) - increases score
+  - **Minus button** (red circle) - decreases score by 1
+  - **Edit button** (blue pencil circle) - **NEW!** Set score directly to any value
+  - **Plus button** (green circle) - increases score by 1
 - Scores cannot go below 0
+- **Direct Score Entry**: Tap the pencil button to:
+  - Enter any integer score (positive or negative)
+  - Useful for quickly setting scores or making large adjustments
+  - Minimum score of 0 is still enforced
 
 #### Ending the Game
 1. Tap the **"KABOO!"** button (fancy red-orange gradient with shadow)
@@ -75,6 +84,8 @@ Kaboo is a SwiftUI app for tracking scores in the Sicilian card game Kaboo. The 
 - **Shared State**: Single GameStore instance manages all data
 - **Error Handling**: Proper logging for data save/load operations
 - **Score Validation**: Minimum score of 0 enforced
+- **Flexible Scoring**: Both incremental (+/-) and direct score entry supported
+- **Custom Game Dates**: Record games with accurate timestamps, including historical games
 
 ## Game Rules (Simplified)
 1. Each player accumulates points during gameplay
@@ -84,7 +95,8 @@ Kaboo is a SwiftUI app for tracking scores in the Sicilian card game Kaboo. The 
 
 ## Tips
 - Add all players before starting to track scores
-- Use the +/- buttons frequently to keep scores updated
+- Use the +/- buttons for quick adjustments, or the pencil button to set scores directly
+- When recording historical games, use the date picker to set the correct date and time
 - Review game history to track player performance over time
 - The fancy "KABOO!" button makes ending the game exciting!
 
