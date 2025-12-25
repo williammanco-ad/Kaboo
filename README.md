@@ -19,11 +19,24 @@ Kaboo is a SwiftUI iOS app that allows players to track scores for the Sicilian 
 - Smooth fade-in animation
 - Displays for 2.5 seconds on app launch
 
+### New Features (Latest Update)
+- **Direct Score Input**: Tap the pencil button on any player card to enter a score directly
+  - Supports any integer value (positive or negative)
+  - Quick way to set exact scores
+  - Minimum score validation (0) still enforced
+- **Game Date Selection**: When starting a new game, choose the date and time
+  - Perfect for recording historical games
+  - Use current time for real-time gameplay
+  - Graphical date picker interface
+
 ### Home Tab
 - **Start New Game**: Big green button to initiate a game session
+  - **NEW:** Date picker to select when the game is being played
+  - Options for current time or historical dates
 - **Add Players**: Add multiple players with custom names
 - **Score Management**: 
-  - Plus/minus buttons for each player
+  - Plus/minus buttons for incremental score adjustments
+  - **NEW:** Direct score input button (pencil icon) to set any score value
   - Real-time score updates
   - Visual card-style player list
 - **Kaboo Button**: Fancy gradient button to end the game
@@ -74,8 +87,9 @@ Kaboo/
 
 1. Launch the app (splash screen appears)
 2. Tap "Start New Game" on the Home tab
-3. Add players using the "Add Player" button
-4. During gameplay, use +/- buttons to adjust scores
-5. When ready to finish, tap the "KABOO!" button
-6. The winner (lowest score) is announced
-7. View the completed game in the History tab
+3. Select the game date/time (or use current time)
+4. Add players using the "Add Player" button
+5. During gameplay, use +/- buttons for quick adjustments or pencil button to set exact scores
+6. When ready to finish, tap the "KABOO!" button
+7. The winner (lowest score) is announced
+8. View the completed game in the History tab
