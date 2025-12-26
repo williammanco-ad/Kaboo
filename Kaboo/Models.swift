@@ -83,6 +83,11 @@ class GameStore: ObservableObject {
         currentSession = nil
     }
     
+    func deleteSession(sessionId: UUID) {
+        pastSessions.removeAll { $0.id == sessionId }
+        saveSessions()
+    }
+    
     private func saveSessions() {
         do {
             let encoded = try JSONEncoder().encode(pastSessions)
