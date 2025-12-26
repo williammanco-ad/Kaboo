@@ -11,9 +11,7 @@ struct HomeView: View {
     @EnvironmentObject var gameStore: GameStore
     @State private var showingAddPlayer = false
     @State private var newPlayerName = ""
-    @State private var showingKabooAlert = false
-    @State private var showingDatePicker = false
-    @State private var selectedGameDate = Date()
+    @State private var showingCelebration = false
     
     var body: some View {
         NavigationStack {
@@ -39,8 +37,7 @@ struct HomeView: View {
                                 .fontWeight(.semibold)
                             
                             Button(action: {
-                                showingDatePicker = true
-                                selectedGameDate = Date()
+                                gameStore.startNewGame()
                             }) {
                                 HStack {
                                     Image(systemName: "play.fill")
@@ -109,12 +106,12 @@ struct HomeView: View {
                                     
                                     if !session.players.isEmpty {
                                         Button(action: {
-                                            showingKabooAlert = true
+                                            showingCelebration = true
                                         }) {
                                             HStack {
                                                 Image(systemName: "flag.checkered")
-                                                Text("KABOO!")
-                                                    .fontWeight(.heavy)
+                                                Text("End the game")
+                                                    .fontWeight(.semibold)
                                             }
                                             .frame(maxWidth: .infinity)
                                             .padding()
@@ -162,27 +159,92 @@ struct HomeView: View {
                     }
                 }
             }
-            .alert("Game Over!", isPresented: $showingKabooAlert) {
-                Button("Finish Game") {
-                    gameStore.callKaboo()
-                }
-                Button("Cancel", role: .cancel) { }
-            } message: {
+            .sheet(isPresented: $showingCelebration) {
                 if let winner = gameStore.currentSession?.winner() {
-                    Text("\(winner.name) wins with \(winner.score) points!")
+                    WinnerCelebrationView(
+                        winner: winner,
+                        onFinish: {
+                            gameStore.callKaboo()
+                            showingCelebration = false
+                        }
+                    )
                 }
             }
-            .sheet(isPresented: $showingDatePicker) {
-                DatePickerSheet(
-                    selectedDate: $selectedGameDate,
-                    onConfirm: { date in
-                        gameStore.startNewGame(withDate: date)
-                        showingDatePicker = false
-                    },
-                    onCancel: {
-                        showingDatePicker = false
-                    }
-                )
+        }
+    }
+}
+
+struct WinnerCelebrationView: View {
+    let winner: Player
+    let onFinish: () -> Void
+    @State private var scale: CGFloat = 0.5
+    @State private var opacity: Double = 0.0
+    @State private var confettiOpacity: Double = 0.0
+    
+    var body: some View {
+        ZStack {
+            // Background gradient
+            LinearGradient(
+                gradient: Gradient(colors: [Color.yellow.opacity(0.3), Color.orange.opacity(0.2)]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+            
+            VStack(spacing: 30) {
+                // Trophy animation
+                Image(systemName: "trophy.fill")
+                    .font(.system(size: 100))
+                    .foregroundColor(.yellow)
+                    .shadow(color: .orange, radius: 20)
+                    .scaleEffect(scale)
+                    .opacity(opacity)
+                
+                VStack(spacing: 15) {
+                    Text("🎉 Winner! 🎉")
+                        .font(.system(size: 48, weight: .bold, design: .rounded))
+                        .foregroundColor(.orange)
+                        .opacity(opacity)
+                    
+                    Text(winner.name)
+                        .font(.system(size: 36, weight: .bold))
+                        .foregroundColor(.primary)
+                        .opacity(opacity)
+                    
+                    Text("\(winner.score) points")
+                        .font(.title2)
+                        .foregroundColor(.gray)
+                        .opacity(opacity)
+                }
+                
+                Button(action: onFinish) {
+                    Text("Finish Game")
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .cornerRadius(15)
+                        .shadow(color: .green.opacity(0.4), radius: 10)
+                }
+                .padding(.horizontal, 40)
+                .padding(.top, 20)
+                .opacity(opacity)
+            }
+        }
+        .onAppear {
+            withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) {
+                scale = 1.2
+                opacity = 1.0
+            }
+            
+            withAnimation(.easeInOut(duration: 0.5).delay(0.2)) {
+                confettiOpacity = 1.0
+            }
+            
+            // Bounce effect
+            withAnimation(.easeInOut(duration: 0.3).delay(0.6)) {
+                scale = 1.0
             }
         }
     }
@@ -191,8 +253,9 @@ struct HomeView: View {
 struct PlayerScoreCard: View {
     let player: Player
     let onScoreChange: (Int) -> Void
-    @State private var showingScoreInput = false
-    @State private var scoreInput = ""
+    @State private var showingAddPrompt = false
+    @State private var showingSubtractPrompt = false
+    @State private var pointsInput = ""
     
     var body: some View {
         HStack {
@@ -208,7 +271,8 @@ struct PlayerScoreCard: View {
             
             HStack(spacing: 15) {
                 Button(action: {
-                    onScoreChange(max(Player.minimumScore, player.score - 1))
+                    showingSubtractPrompt = true
+                    pointsInput = ""
                 }) {
                     Image(systemName: "minus.circle.fill")
                         .font(.title2)
@@ -216,16 +280,8 @@ struct PlayerScoreCard: View {
                 }
                 
                 Button(action: {
-                    showingScoreInput = true
-                    scoreInput = "\(player.score)"
-                }) {
-                    Image(systemName: "pencil.circle.fill")
-                        .font(.title2)
-                        .foregroundColor(.blue)
-                }
-                
-                Button(action: {
-                    onScoreChange(player.score + 1)
+                    showingAddPrompt = true
+                    pointsInput = ""
                 }) {
                     Image(systemName: "plus.circle.fill")
                         .font(.title2)
@@ -237,91 +293,36 @@ struct PlayerScoreCard: View {
         .background(Color.white)
         .cornerRadius(12)
         .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
-        .alert("Set Score for \(player.name)", isPresented: $showingScoreInput) {
-            TextField("Score", text: $scoreInput)
-                .keyboardType(.numbersAndPunctuation)
+        .alert("Add Points to \(player.name)", isPresented: $showingAddPrompt) {
+            TextField("Points to add", text: $pointsInput)
+                .keyboardType(.numberPad)
             Button("Cancel", role: .cancel) {
-                scoreInput = ""
+                pointsInput = ""
             }
-            Button("Set") {
-                if let newScore = Int(scoreInput) {
-                    onScoreChange(max(Player.minimumScore, newScore))
+            Button("Add") {
+                if let points = Int(pointsInput), points > 0 {
+                    onScoreChange(player.score + points)
                 }
-                scoreInput = ""
+                pointsInput = ""
             }
         } message: {
-            Text("Enter a score (minimum \(Player.minimumScore))")
+            Text("Enter how many points to add")
         }
-    }
-}
-
-struct DatePickerSheet: View {
-    @Binding var selectedDate: Date
-    let onConfirm: (Date) -> Void
-    let onCancel: () -> Void
-    
-    var body: some View {
-        NavigationStack {
-            VStack(spacing: 20) {
-                Text("Select Game Date")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .padding(.top, 30)
-                
-                Text("Choose when this game is being played")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-                
-                DatePicker(
-                    "Game Date",
-                    selection: $selectedDate,
-                    in: ...Date(),
-                    displayedComponents: [.date, .hourAndMinute]
-                )
-                .datePickerStyle(.graphical)
-                .padding()
-                
-                HStack(spacing: 15) {
-                    Button(action: {
-                        onCancel()
-                    }) {
-                        Text("Cancel")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.gray.opacity(0.2))
-                            .foregroundColor(.gray)
-                            .cornerRadius(12)
-                    }
-                    
-                    Button(action: {
-                        onConfirm(selectedDate)
-                    }) {
-                        Text("Start Game")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.green)
-                            .foregroundColor(.white)
-                            .cornerRadius(12)
-                    }
-                }
-                .padding()
-                
-                Button(action: {
-                    onConfirm(Date())
-                }) {
-                    HStack {
-                        Image(systemName: "clock.fill")
-                        Text("Use Current Time")
-                    }
-                    .foregroundColor(.blue)
-                }
-                .padding(.bottom, 30)
-                
-                Spacer()
+        .alert("Subtract Points from \(player.name)", isPresented: $showingSubtractPrompt) {
+            TextField("Points to subtract", text: $pointsInput)
+                .keyboardType(.numberPad)
+            Button("Cancel", role: .cancel) {
+                pointsInput = ""
             }
-            .background(Color(UIColor.systemGroupedBackground))
+            Button("Subtract") {
+                if let points = Int(pointsInput), points > 0 {
+                    onScoreChange(max(Player.minimumScore, player.score - points))
+                }
+                pointsInput = ""
+            }
+        } message: {
+            Text("Enter how many points to subtract")
         }
-        .presentationDetents([.medium, .large])
     }
 }
 

@@ -19,6 +19,11 @@ struct ContentView: View {
                 .tabItem {
                     Label("History", systemImage: "clock.fill")
                 }
+            
+            HowToPlayView()
+                .tabItem {
+                    Label("How To Play", systemImage: "book.fill")
+                }
         }
         .accentColor(.green)
     }

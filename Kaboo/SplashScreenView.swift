@@ -38,12 +38,6 @@ struct SplashScreenView: View {
                     Text("♦️")
                         .font(.system(size: 60))
                 }
-                
-                // Subtitle
-                Text("Cards Game from Sicily")
-                    .font(.system(size: 20, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.9))
-                    .padding(.top, 10)
             }
             .scaleEffect(scale)
             .opacity(opacity)
