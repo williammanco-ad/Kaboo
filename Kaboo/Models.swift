@@ -49,8 +49,8 @@ class GameStore: ObservableObject {
         loadSessions()
     }
     
-    func startNewGame(withDate date: Date = Date()) {
-        currentSession = GameSession(date: date)
+    func startNewGame() {
+        currentSession = GameSession(date: Date())
     }
     
     func addPlayer(name: String) {
