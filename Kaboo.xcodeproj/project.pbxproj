@@ -14,6 +14,7 @@
 		04706625A0F61DE63BAFD1EA /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC079F5DB02554B4CA18EB0D /* HistoryView.swift */; };
 		8349290C03FEFEDA6D0E2970 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74394CD94FE005B4852C7F38 /* Models.swift */; };
 		09ED1E82F51670A094039F9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B587346216FFB825DC4527D /* Assets.xcassets */; };
+		A1B2C3D4E5F6789012345678 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E2D3C4B5A6978012345678 /* HowToPlayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		BC079F5DB02554B4CA18EB0D /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		74394CD94FE005B4852C7F38 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		9B587346216FFB825DC4527D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F1E2D3C4B5A6978012345678 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 				2AA2DB9179BD5CE2A7B0AD4E /* SplashScreenView.swift */,
 				48CABCADF169A03DE09C8420 /* HomeView.swift */,
 				BC079F5DB02554B4CA18EB0D /* HistoryView.swift */,
+				F1E2D3C4B5A6978012345678 /* HowToPlayView.swift */,
 				74394CD94FE005B4852C7F38 /* Models.swift */,
 				9B587346216FFB825DC4527D /* Assets.xcassets */,
 			);
@@ -142,6 +145,7 @@
 				FE4D13C5C609232D8A7F8481 /* SplashScreenView.swift in Sources */,
 				6C924540FF19D560E4212018 /* HomeView.swift in Sources */,
 				04706625A0F61DE63BAFD1EA /* HistoryView.swift in Sources */,
+				A1B2C3D4E5F6789012345678 /* HowToPlayView.swift in Sources */,
 				8349290C03FEFEDA6D0E2970 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
