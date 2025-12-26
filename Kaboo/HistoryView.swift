@@ -40,6 +40,13 @@ struct HistoryView: View {
                         VStack(spacing: 15) {
                             ForEach(gameStore.pastSessions) { session in
                                 GameSessionCard(session: session)
+                                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                        Button(role: .destructive) {
+                                            gameStore.deleteSession(sessionId: session.id)
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                        }
+                                    }
                             }
                         }
                         .padding()

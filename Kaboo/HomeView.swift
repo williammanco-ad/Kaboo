@@ -110,7 +110,7 @@ struct HomeView: View {
                                         }) {
                                             HStack {
                                                 Image(systemName: "flag.checkered")
-                                                Text("End the game")
+                                                Text("Finish & Declare Winner")
                                                     .fontWeight(.semibold)
                                             }
                                             .frame(maxWidth: .infinity)
@@ -183,9 +183,9 @@ struct WinnerCelebrationView: View {
     
     var body: some View {
         ZStack {
-            // Background gradient
+            // Background gradient - darker colors to make yellow trophy stand out
             LinearGradient(
-                gradient: Gradient(colors: [Color.yellow.opacity(0.3), Color.orange.opacity(0.2)]),
+                gradient: Gradient(colors: [Color.purple.opacity(0.6), Color.blue.opacity(0.5)]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
